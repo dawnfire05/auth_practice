@@ -13,7 +13,24 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(),
-        body: const Column(),
+        body: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                "로그인",
+                style: TextStyle(fontSize: 35),
+              ),
+              TextFormField(
+                decoration: const InputDecoration(hintText: "아이디"),
+              ),
+              TextFormField(
+                decoration: const InputDecoration(hintText: "비밀번호"),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
