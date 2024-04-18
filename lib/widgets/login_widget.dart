@@ -8,11 +8,13 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
-  final loginFormController = TextEditingController();
+  final idFormController = TextEditingController();
+  final pwFormController = TextEditingController();
 
   @override
   void dispose() {
-    loginFormController.dispose();
+    idFormController.dispose();
+    pwFormController.dispose();
     super.dispose();
   }
 
@@ -31,12 +33,30 @@ class _LoginFormState extends State<LoginForm> {
             ),
             TextFormField(
               decoration: const InputDecoration(hintText: "아이디"),
+              controller: idFormController,
             ),
             TextFormField(
               decoration: const InputDecoration(hintText: "비밀번호"),
+              controller: pwFormController,
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                content: Text(
+                  "id : ${idFormController.text}\npw: ${pwFormController.text}",
+                ),
+              );
+            },
+          );
+        },
+        tooltip: 'Show me the input!',
+        child: const Icon(Icons.text_fields),
       ),
     );
   }
