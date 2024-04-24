@@ -12,23 +12,29 @@ class _TextSizeEditorState extends State<TextSizeEditor> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        children: [
-          const Text("텍스트 사이즈를 조절하세요"),
-          Slider(
-            value: _currentNum,
-            max: 100,
-            divisions: 5,
-            onChanged: (double value) {
-              setState(
-                () {
-                  _currentNum = value;
-                },
-              );
-            },
-          ),
-        ],
+    return Scaffold(
+      appBar: AppBar(title: const Text('hi')),
+      body: Center(
+        child: Column(
+          children: [
+            Text(
+              "텍스트 사이즈를 조절하세요",
+              style: TextStyle(fontSize: _currentNum),
+            ),
+            Slider(
+              value: _currentNum,
+              min: 10,
+              max: 30,
+              onChanged: (double value) {
+                setState(
+                  () {
+                    _currentNum = value;
+                  },
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
